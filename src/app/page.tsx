@@ -53,7 +53,7 @@ export default function Home() {
           />
         </div>
         <span style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a7860', fontWeight: 500, display: 'block', marginBottom: '20px' }}>
-          Premium Goum-gwaja Shop
+          Online Premium Goum-gwaja Gift Shop
         </span>
         <h1 style={{
           fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif",
@@ -65,7 +65,7 @@ export default function Home() {
           wordBreak: 'keep-all'
         }}>
           마음을 묶어 전하는 달콤함,<br />
-          스위트리본 구움과자 답례품
+          스위트리본 온라인 구움과자 답례품
         </h1>
         <p style={{
           fontSize: '16px',
@@ -76,8 +76,8 @@ export default function Home() {
           margin: '0 auto 40px auto',
           wordBreak: 'keep-all'
         }}>
-          엄선된 최상의 버터와 유기농 밀가루, 계절의 맛을 담은 비정제 설탕을 사용하여 깊고 진한 풍미의 구움과자를 굽습니다. 
-          소중한 날, 감사의 마음이 더 정갈하게 전달되도록 클래식하고 우아한 실크 리본 패키지에 담아 전합니다.
+          엄선된 최상의 프랑스산 고메 버터와 유기농 밀가루를 사용하여 깊고 진한 풍미의 구움과자를 매일 정성스럽게 굽습니다.
+          소중한 날 감사의 마음이 정갈하게 전달되도록 클래식하고 우아한 실크 리본 패키지에 담아 전국으로 안전하게 전해드립니다.
         </p>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
           <a href="#" style={{
@@ -106,19 +106,19 @@ export default function Home() {
           <div style={{ textAlign: 'center', padding: '0 20px' }}>
             <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Financier</h3>
             <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              태운 버터의 고소하고 묵직한 풍미와 겉은 쫀득하고 속은 촉촉한 스위트리본의 대표 시그니처 구움과자입니다.
+              태운 버터의 고소하고 묵직한 풍미와 겉은 쫀득하고 속은 촉촉한 식감을 자랑하는 스위트리본의 대표 시그니처 휘낭시에입니다.
             </p>
           </div>
           <div style={{ textAlign: 'center', padding: '0 20px', borderLeft: '1px solid #dcd4c3', borderRight: '1px solid #dcd4c3' }}>
             <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Madeleine</h3>
             <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              상큼한 레몬필과 부드러운 버터향이 조화를 이루어, 한 입 베어 물 때마다 향긋함이 부드럽게 감도는 정통 마들렌입니다.
+              상큼한 레몬필과 감미로운 버터향이 조화를 이루어, 한 입 베어 물 때마다 향긋함이 부드럽게 감도는 정통 마들렌입니다.
             </p>
           </div>
           <div style={{ textAlign: 'center', padding: '0 20px' }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Canele</h3>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Sable (6 Flavors)</h3>
             <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              오랜 시간 정성 들여 구워내어 바삭하고 진한 카라멜 라이즈드 외피 속에 촉촉한 커스터드 크림을 품은 정통 까눌레입니다.
+              입안에서 부드럽게 사르르 녹아내리는 매력적인 사블레 쿠키 6종(황치즈, 말차, 초코, 크랜베리, 바닐라, 커피)의 다채로운 풍미를 만나보세요.
             </p>
           </div>
         </div>
@@ -137,10 +137,10 @@ export default function Home() {
           Bulk & Corporate Orders
         </span>
         <h2 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '36px', fontWeight: 300, color: '#fbfaf7', marginBottom: '16px', lineHeight: 1.3 }}>
-          단체 답례품 견적 문의
+          기업 · 관공서 · 단체 답례품 견적 문의
         </h2>
-        <p style={{ fontSize: '15px', color: '#c2b59b', fontWeight: 300, lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 36px auto', wordBreak: 'keep-all' }}>
-          결혼식·돌잔치·기업 행사 등 30개 이상의 단체 주문은 맞춤 견적으로 더 합리적으로 준비하세요.
+        <p style={{ fontSize: '15px', color: '#c2b59b', fontWeight: 300, lineHeight: 1.8, maxWidth: '580px', margin: '0 auto 36px auto', wordBreak: 'keep-all' }}>
+          기업 행사, 관공서 단체 주문, 결혼식이나 돌잔치 등 소중한 순간을 위한 단체 주문을 적극 환영합니다. 예산 맞춤 구성 및 커스텀 스티커/태그 서비스를 제공해 드립니다.
         </p>
         <Link href="/contact" style={{
           display: 'inline-block',
