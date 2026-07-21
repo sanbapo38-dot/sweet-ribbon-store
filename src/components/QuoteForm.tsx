@@ -11,6 +11,7 @@ interface FormState {
 const PRODUCT_OPTIONS = [
   { id: 'financier', label: '휘낭시에 (Financier)' },
   { id: 'madeleine', label: '마들렌 (Madeleine)' },
+  { id: 'almond-choco-cookie', label: '아몬드 쇼콜라 쿠키 (Almond Choco Cookie)' },
   { id: 'canele', label: '까눌레 (Canelé)' },
   { id: 'sable', label: '버터 사블레 (Sablé)' },
   { id: 'pound', label: '파운드 케이크 (Pound Cake)' },

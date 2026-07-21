@@ -193,11 +193,11 @@ export default function Home() {
         borderTop: '1px solid #e9e4d9',
         borderBottom: '1px solid #e9e4d9'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '30px' }}>
           {/* Financier Product */}
           <div style={{ 
             backgroundColor: '#ffffff', 
-            padding: '40px 30px', 
+            padding: '36px 24px', 
             border: '1px solid #e9e4d9', 
             borderRadius: '2px', 
             textAlign: 'center',
@@ -239,7 +239,7 @@ export default function Home() {
           {/* Madeleine Product */}
           <div style={{ 
             backgroundColor: '#ffffff', 
-            padding: '40px 30px', 
+            padding: '36px 24px', 
             border: '1px solid #e9e4d9', 
             borderRadius: '2px', 
             textAlign: 'center',
@@ -278,10 +278,85 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Almond Choco Cookie Product (NEW) */}
+          <div style={{ 
+            backgroundColor: '#ffffff', 
+            padding: '36px 24px', 
+            border: '1px solid #e9e4d9', 
+            borderRadius: '2px', 
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            transition: 'transform 0.3s, box-shadow 0.3s',
+            boxShadow: '0 4px 16px rgba(89, 74, 63, 0.05)',
+            position: 'relative'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '14px',
+              right: '14px',
+              backgroundColor: '#8a7860',
+              color: '#ffffff',
+              fontSize: '10px',
+              fontWeight: 600,
+              letterSpacing: '0.05em',
+              padding: '3px 8px',
+              borderRadius: '2px'
+            }}>
+              NEW
+            </div>
+            <div>
+              <div style={{
+                width: '130px',
+                height: '130px',
+                margin: '0 auto 20px auto',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                boxShadow: '0 6px 16px rgba(89, 74, 63, 0.12)',
+                border: '3px solid #fbfaf7'
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="/images/almond-chocolate-cookie.png" 
+                  alt="아몬드 쇼콜라 쿠키" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 500, color: '#2c221e', marginBottom: '16px', letterSpacing: '-0.01em' }}>
+                Almond Choco Cookie
+              </h3>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '20px' }}>
+                슬라이스 아몬드의 고소한 풍미와 진한 프리미엄 발로나 초콜릿의 달콤함이 어우러진 바삭한 수제 아몬드 쇼콜라 쿠키입니다.
+              </p>
+            </div>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: 500, color: '#3c322b', marginBottom: '20px', fontFamily: "'Outfit', sans-serif" }}>3,000원</div>
+              <button 
+                onClick={() => addToCart({ id: 'almond-choco-cookie', name: '아몬드 쇼콜라 쿠키', price: 3000 })}
+                style={{
+                  backgroundColor: '#594a3f',
+                  border: '1px solid #594a3f',
+                  color: '#ffffff',
+                  padding: '10px 24px',
+                  fontSize: '12px',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  width: '100%',
+                  fontWeight: 500,
+                  transition: 'all 0.2s'
+                }}
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </div>
+
           {/* Sable Product */}
           <div style={{ 
             backgroundColor: '#ffffff', 
-            padding: '40px 30px', 
+            padding: '36px 24px', 
             border: '1px solid #e9e4d9', 
             borderRadius: '2px', 
             textAlign: 'center',
