@@ -42,7 +42,7 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
-            src="/images/brand-mascot.svg" 
+            src="/images/brand-mascot.png" 
             alt="Sweet Ribbon Mascot Ribboni" 
             style={{ 
               width: '150px', 
