@@ -72,6 +72,17 @@ export default function KakaoTalkWidget() {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes pulseGlow {
+          0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.95; }
+          50% { transform: translateY(-50%) scale(1.03); opacity: 1; }
+        }
+        @keyframes pulseBtn {
+          0%, 100% { box-shadow: 0 4px 16px rgba(89, 74, 63, 0.25), 0 0 0 0 rgba(60, 50, 43, 0.4); }
+          70% { box-shadow: 0 4px 16px rgba(89, 74, 63, 0.25), 0 0 0 8px rgba(60, 50, 43, 0); }
+        }
+      `}} />
+
       {/* Expanded Menu */}
       <div 
         style={{
@@ -135,38 +146,78 @@ export default function KakaoTalkWidget() {
         ))}
       </div>
 
-      {/* Main Floating Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          width: '56px',
-          height: '56px',
-          borderRadius: '50%',
-          backgroundColor: '#3c322b',
-          border: 'none',
-          boxShadow: '0 4px 16px rgba(89, 74, 63, 0.25)',
-          cursor: 'pointer',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#fbfaf7',
-          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          position: 'relative',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.08)';
-          e.currentTarget.style.boxShadow = '0 6px 20px rgba(89, 74, 63, 0.35)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 4px 16px rgba(89, 74, 63, 0.25)';
-        }}
-        aria-label="Contact Channels"
-      >
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
-        </svg>
-      </button>
+      {/* Main Floating Button & Catchy Label Wrapper */}
+      <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+        {/* Pulsing Attention Badge */}
+        {!isOpen && (
+          <div 
+            style={{
+              position: 'absolute',
+              right: '68px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              backgroundColor: '#594a3f',
+              color: '#fbfaf7',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: 500,
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 12px rgba(89, 74, 63, 0.15)',
+              pointerEvents: 'none',
+              animation: 'pulseGlow 2s infinite ease-in-out',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <span style={{ 
+              display: 'inline-block', 
+              width: '6px', 
+              height: '6px', 
+              backgroundColor: '#FEE500', 
+              borderRadius: '50%',
+            }}></span>
+            실시간 문의 & SNS
+          </div>
+        )}
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            backgroundColor: '#3c322b',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#fbfaf7',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            position: 'relative',
+            animation: !isOpen ? 'pulseBtn 2s infinite' : 'none'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.08)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+          aria-label="Contact Channels"
+        >
+          {isOpen ? (
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+              <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+            </svg>
+          )}
+        </button>
+      </div>
     </div>
   );
 }
