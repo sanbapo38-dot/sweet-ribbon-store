@@ -127,6 +127,111 @@ export default function Home() {
       {/* Instagram Feed Section */}
       <InstagramFeed />
 
+      {/* Customer Reviews Section */}
+      <section style={{
+        padding: '100px 40px',
+        backgroundColor: '#f5f2eb',
+        borderTop: '1px solid #e9e4d9',
+        borderBottom: '1px solid #e9e4d9',
+        textAlign: 'center'
+      }}>
+        <span style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a7860', fontWeight: 500, display: 'block', marginBottom: '16px' }}>
+          Customer Stories
+        </span>
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif",
+          fontSize: '36px',
+          fontWeight: 300,
+          color: '#3c322b',
+          marginBottom: '50px'
+        }}>
+          스위트리본을 선택해주신 분들의 이야기
+        </h2>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '30px',
+          textAlign: 'left'
+        }}>
+          {/* Review 1 */}
+          <div style={{
+            backgroundColor: '#ffffff',
+            padding: '40px 30px',
+            border: '1px solid #e9e4d9',
+            borderRadius: '2px',
+            boxShadow: '0 4px 20px rgba(89, 74, 63, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%'
+          }}>
+            <div>
+              <div style={{ color: '#d4af37', fontSize: '14px', marginBottom: '16px', letterSpacing: '2px' }}>★★★★★</div>
+              <h4 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '17px', color: '#3c322b', marginBottom: '14px', fontWeight: 500 }}>"정말 고급스럽고 맛있어요"</h4>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '24px' }}>
+                결혼식 답례품으로 주문했는데 하객분들이 패키지가 너무 정성스럽고 예쁘다며 칭찬 많이 해주셨어요. 무엇보다 사블레랑 휘낭시에가 정말 고급스러운 단맛이라 어른들도 무척 좋아하셨습니다.
+              </p>
+            </div>
+            <div style={{ borderTop: '1px solid #e9e4d9', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '12px', color: '#8a7860', fontWeight: 500 }}>결혼식 답례품</span>
+              <span style={{ fontSize: '12px', color: '#594a3f', fontWeight: 300 }}>김*영 님</span>
+            </div>
+          </div>
+
+          {/* Review 2 */}
+          <div style={{
+            backgroundColor: '#ffffff',
+            padding: '40px 30px',
+            border: '1px solid #e9e4d9',
+            borderRadius: '2px',
+            boxShadow: '0 4px 20px rgba(89, 74, 63, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%'
+          }}>
+            <div>
+              <div style={{ color: '#d4af37', fontSize: '14px', marginBottom: '16px', letterSpacing: '2px' }}>★★★★★</div>
+              <h4 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '17px', color: '#3c322b', marginBottom: '14px', fontWeight: 500 }}>"기관 행사용 대량 주문 대만족"</h4>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '24px' }}>
+                관공서 송년 행사용으로 급하게 150 세트 문의드렸는데 친절하고 빠르게 안내해 주셔서 무사히 마쳤습니다. 깔끔한 쇼핑백 포장에 리본 커스텀까지 완벽했고 서류 처리도 꼼꼼하게 챙겨주셔서 정말 편했습니다.
+              </p>
+            </div>
+            <div style={{ borderTop: '1px solid #e9e4d9', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '12px', color: '#8a7860', fontWeight: 500 }}>관공서 행사 대량 주문</span>
+              <span style={{ fontSize: '12px', color: '#594a3f', fontWeight: 300 }}>이*재 담당자님</span>
+            </div>
+          </div>
+
+          {/* Review 3 */}
+          <div style={{
+            backgroundColor: '#ffffff',
+            padding: '40px 30px',
+            border: '1px solid #e9e4d9',
+            borderRadius: '2px',
+            boxShadow: '0 4px 20px rgba(89, 74, 63, 0.03)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%'
+          }}>
+            <div>
+              <div style={{ color: '#d4af37', fontSize: '14px', marginBottom: '16px', letterSpacing: '2px' }}>★★★★★</div>
+              <h4 style={{ fontFamily: "'Noto Serif KR', serif", fontSize: '17px', color: '#3c322b', marginBottom: '14px', fontWeight: 500 }}>"아이 돌잔치 답례품으로 최고였어요"</h4>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '24px' }}>
+                아이 돌잔치 때 돌린 선물인데 마들렌이 진짜 촉촉하고 맛있어요! 사블레 쿠키 6종도 맛이 다양해서 온 가족 간식으로도 아주 좋네요. 꼼꼼한 포장 덕분에 온라인 배송인데도 파손 없이 깨끗하게 도착했습니다.
+              </p>
+            </div>
+            <div style={{ borderTop: '1px solid #e9e4d9', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '12px', color: '#8a7860', fontWeight: 500 }}>돌잔치 답례품</span>
+              <span style={{ fontSize: '12px', color: '#594a3f', fontWeight: 300 }}>최*지 님</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Banner - 단체 견적 문의 */}
       <section style={{
         padding: '80px 40px',
