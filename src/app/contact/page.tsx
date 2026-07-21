@@ -82,6 +82,9 @@ export default function ContactPage() {
             <p><strong>Tel</strong> | 02-1234-5678</p>
             <p><strong>Instagram</strong> | <a href="https://instagram.com/sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>@sweet_ribbon_store</a></p>
             <p><strong>KakaoTalk</strong> | <a href="https://pf.kakao.com/_sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>@스위트리본</a></p>
+            <p><strong>Naver TalkTalk</strong> | <a href="https://talk.naver.com/ct/sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>네이버 톡톡 문의</a></p>
+            <p><strong>Naver Blog</strong> | <a href="https://blog.naver.com/sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>스위트리본 공식 블로그</a></p>
+            <p><strong>YouTube</strong> | <a href="https://youtube.com/@sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>스위트리본 유튜브</a></p>
           </div>
         </div>
       </footer>
