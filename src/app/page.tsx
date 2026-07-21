@@ -1,11 +1,51 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import InstagramFeed from '../components/InstagramFeed';
 import KakaoTalkWidget from '../components/KakaoTalkWidget';
 
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 export default function Home() {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const addToCart = (product: { id: string; name: string; price: number }) => {
+    setCart(prev => {
+      const existing = prev.find(item => item.id === product.id);
+      if (existing) {
+        return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+      }
+      return [...prev, { ...product, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+  };
+
+  const updateQuantity = (id: string, amount: number) => {
+    setCart(prev => prev.map(item => {
+      if (item.id === id) {
+        const newQty = item.quantity + amount;
+        return newQty > 0 ? { ...item, quantity: newQty } : item;
+      }
+      return item;
+    }).filter(item => item.quantity > 0));
+  };
+
+  const removeFromCart = (id: string) => {
+    setCart(prev => prev.filter(item => item.id !== id));
+  };
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
   return (
-    <div style={{ backgroundColor: '#fbfaf7', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ backgroundColor: '#fbfaf7', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
       {/* Header */}
       <header style={{
         padding: '30px 40px',
@@ -13,7 +53,10 @@ export default function Home() {
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1px solid #e9e4d9',
-        backgroundColor: '#fbfaf7'
+        backgroundColor: '#fbfaf7',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100
       }}>
         <div style={{
           fontFamily: "'Cormorant Garamond', serif",
@@ -24,11 +67,58 @@ export default function Home() {
         }}>
           Sweet Ribbon
         </div>
-        <nav style={{ display: 'flex', gap: '30px', fontSize: '14px', letterSpacing: '0.05em', color: '#594a3f', fontWeight: 300 }}>
+        <nav style={{ display: 'flex', gap: '30px', fontSize: '14px', letterSpacing: '0.05em', color: '#594a3f', fontWeight: 300, alignItems: 'center' }}>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>About</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Goum-gwaja</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Gift Set</a>
           <Link href="/contact" style={{ borderBottom: '1px solid transparent', color: 'inherit' }}>Contact</Link>
+          
+          {/* Cart Icon Button */}
+          <button 
+            onClick={() => setIsCartOpen(true)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#3c322b',
+              padding: '4px',
+              marginLeft: '10px',
+              transition: 'transform 0.2s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            aria-label="Open Shopping Cart"
+          >
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            {totalItems > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-4px',
+                right: '-6px',
+                backgroundColor: '#594a3f',
+                color: '#ffffff',
+                fontSize: '10px',
+                fontWeight: 600,
+                width: '18px',
+                height: '18px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+              }}>
+                {totalItems}
+              </span>
+            )}
+          </button>
         </nav>
       </header>
 
@@ -103,23 +193,130 @@ export default function Home() {
         borderBottom: '1px solid #e9e4d9'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
-          <div style={{ textAlign: 'center', padding: '0 20px' }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Financier</h3>
-            <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              태운 버터의 고소하고 묵직한 풍미와 겉은 쫀득하고 속은 촉촉한 식감을 자랑하는 스위트리본의 대표 시그니처 휘낭시에입니다.
-            </p>
+          {/* Financier Product */}
+          <div style={{ 
+            backgroundColor: '#ffffff', 
+            padding: '40px 30px', 
+            border: '1px solid #e9e4d9', 
+            borderRadius: '2px', 
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            transition: 'transform 0.3s',
+            boxShadow: '0 4px 12px rgba(89, 74, 63, 0.02)'
+          }}>
+            <div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Financier</h3>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '20px' }}>
+                태운 버터의 고소하고 묵직한 풍미와 겉은 쫀득하고 속은 촉촉한 식감을 자랑하는 스위트리본의 대표 시그니처 휘낭시에입니다.
+              </p>
+            </div>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: 500, color: '#3c322b', marginBottom: '20px', fontFamily: "'Outfit', sans-serif" }}>2,500원</div>
+              <button 
+                onClick={() => addToCart({ id: 'financier', name: '시그니처 휘낭시에', price: 2500 })}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: '1px solid #594a3f',
+                  color: '#594a3f',
+                  padding: '10px 24px',
+                  fontSize: '12px',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  width: '100%',
+                  fontWeight: 500,
+                  transition: 'all 0.2s'
+                }}
+              >
+                장바구니 담기
+              </button>
+            </div>
           </div>
-          <div style={{ textAlign: 'center', padding: '0 20px', borderLeft: '1px solid #dcd4c3', borderRight: '1px solid #dcd4c3' }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Madeleine</h3>
-            <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              상큼한 레몬필과 감미로운 버터향이 조화를 이루어, 한 입 베어 물 때마다 향긋함이 부드럽게 감도는 정통 마들렌입니다.
-            </p>
+
+          {/* Madeleine Product */}
+          <div style={{ 
+            backgroundColor: '#ffffff', 
+            padding: '40px 30px', 
+            border: '1px solid #e9e4d9', 
+            borderRadius: '2px', 
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            transition: 'transform 0.3s',
+            boxShadow: '0 4px 12px rgba(89, 74, 63, 0.02)'
+          }}>
+            <div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Madeleine</h3>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '20px' }}>
+                상큼한 레몬필과 감미로운 버터향이 조화를 이루어, 한 입 베어 물 때마다 향긋함이 부드럽게 감도는 정통 마들렌입니다.
+              </p>
+            </div>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: 500, color: '#3c322b', marginBottom: '20px', fontFamily: "'Outfit', sans-serif" }}>2,800원</div>
+              <button 
+                onClick={() => addToCart({ id: 'madeleine', name: '정통 마들렌', price: 2800 })}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: '1px solid #594a3f',
+                  color: '#594a3f',
+                  padding: '10px 24px',
+                  fontSize: '12px',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  width: '100%',
+                  fontWeight: 500,
+                  transition: 'all 0.2s'
+                }}
+              >
+                장바구니 담기
+              </button>
+            </div>
           </div>
-          <div style={{ textAlign: 'center', padding: '0 20px' }}>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Sable (6 Flavors)</h3>
-            <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all' }}>
-              입안에서 부드럽게 사르르 녹아내리는 매력적인 사블레 쿠키 6종(황치즈, 말차, 초코, 크랜베리, 바닐라, 커피)의 다채로운 풍미를 만나보세요.
-            </p>
+
+          {/* Sable Product */}
+          <div style={{ 
+            backgroundColor: '#ffffff', 
+            padding: '40px 30px', 
+            border: '1px solid #e9e4d9', 
+            borderRadius: '2px', 
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            transition: 'transform 0.3s',
+            boxShadow: '0 4px 12px rgba(89, 74, 63, 0.02)'
+          }}>
+            <div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '20px', fontWeight: 400, color: '#3c322b', marginBottom: '16px' }}>Sable (6 Flavors)</h3>
+              <p style={{ fontSize: '14px', color: '#594a3f', lineHeight: '1.7', fontWeight: 300, wordBreak: 'keep-all', marginBottom: '20px' }}>
+                입안에서 부드럽게 사르르 녹아내리는 매력적인 사블레 쿠키 6종(황치즈, 말차, 초코, 크랜베리, 바닐라, 커피)의 다채로운 풍미를 만나보세요.
+              </p>
+            </div>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: 500, color: '#3c322b', marginBottom: '20px', fontFamily: "'Outfit', sans-serif" }}>8,500원</div>
+              <button 
+                onClick={() => addToCart({ id: 'sable', name: '사블레 6종 세트', price: 8500 })}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: '1px solid #594a3f',
+                  color: '#594a3f',
+                  padding: '10px 24px',
+                  fontSize: '12px',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  width: '100%',
+                  fontWeight: 500,
+                  transition: 'all 0.2s'
+                }}
+              >
+                장바구니 담기
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -264,7 +461,6 @@ export default function Home() {
         </Link>
       </section>
 
-
       {/* Footer */}
       <footer style={{
         padding: '60px 40px',
@@ -293,6 +489,163 @@ export default function Home() {
         </div>
       </footer>
       <KakaoTalkWidget />
+
+      {/* Cart Overlay */}
+      {isCartOpen && (
+        <div 
+          onClick={() => setIsCartOpen(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(60, 50, 43, 0.4)',
+            backdropFilter: 'blur(2px)',
+            zIndex: 9999,
+            transition: 'opacity 0.3s ease'
+          }}
+        />
+      )}
+
+      {/* Cart Drawer */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: '400px',
+        maxWidth: '100%',
+        backgroundColor: '#ffffff',
+        boxShadow: '-4px 0 30px rgba(89, 74, 63, 0.15)',
+        zIndex: 10000,
+        transform: isCartOpen ? 'translateX(0)' : 'translateX(100%)',
+        transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+        display: 'flex',
+        flexDirection: 'column',
+        fontFamily: "'Noto Sans KR', sans-serif"
+      }}>
+        {/* Cart Header */}
+        <div style={{
+          padding: '24px 30px',
+          borderBottom: '1px solid #e9e4d9',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <h3 style={{ fontSize: '18px', fontWeight: 500, color: '#3c322b', margin: 0 }}>장바구니</h3>
+          <button 
+            onClick={() => setIsCartOpen(false)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '24px',
+              color: '#8a7860',
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            &times;
+          </button>
+        </div>
+
+        {/* Cart Items List */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '30px' }}>
+          {cart.length === 0 ? (
+            <div style={{ textAlign: 'center', color: '#8a7860', marginTop: '60px' }}>
+              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '16px', opacity: 0.7 }}>
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <p style={{ fontSize: '14px', fontWeight: 300 }}>장바구니가 비어 있습니다.</p>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {cart.map((item) => (
+                <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #f5f2eb', paddingBottom: '16px' }}>
+                  <div>
+                    <h4 style={{ fontSize: '14px', fontWeight: 500, color: '#3c322b', margin: '0 0 6px 0' }}>{item.name}</h4>
+                    <span style={{ fontSize: '13px', color: '#8a7860' }}>{(item.price * item.quantity).toLocaleString()}원</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', border: '1px solid #e9e4d9', borderRadius: '2px', backgroundColor: '#fbfaf7' }}>
+                      <button 
+                        onClick={() => updateQuantity(item.id, -1)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 10px', fontSize: '14px', color: '#594a3f' }}
+                      >
+                        -
+                      </button>
+                      <span style={{ fontSize: '13px', minWidth: '20px', textAlign: 'center', color: '#3c322b' }}>{item.quantity}</span>
+                      <button 
+                        onClick={() => updateQuantity(item.id, 1)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 10px', fontSize: '14px', color: '#594a3f' }}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <button 
+                      onClick={() => removeFromCart(item.id)}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: '#c9bda7',
+                        padding: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        transition: 'color 0.2s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#8a7860'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#c9bda7'}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Cart Footer */}
+        {cart.length > 0 && (
+          <div style={{
+            padding: '30px',
+            borderTop: '1px solid #e9e4d9',
+            backgroundColor: '#fbfaf7'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <span style={{ fontSize: '14px', color: '#594a3f' }}>총 합계 금액</span>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#3c322b', fontFamily: "'Outfit', sans-serif" }}>{totalPrice.toLocaleString()}원</span>
+            </div>
+            <Link 
+              href="/contact"
+              style={{
+                display: 'block',
+                backgroundColor: '#3c322b',
+                color: '#ffffff',
+                textDecoration: 'none',
+                textAlign: 'center',
+                padding: '16px',
+                borderRadius: '2px',
+                fontSize: '14px',
+                fontWeight: 500,
+                letterSpacing: '0.05em',
+                transition: 'background-color 0.2s'
+              }}
+              onClick={() => setIsCartOpen(false)}
+            >
+              단체 견적 문의하기
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
