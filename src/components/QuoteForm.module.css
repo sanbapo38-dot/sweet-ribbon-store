@@ -1,0 +1,412 @@
+/* Sweet Ribbon - Quote Form Styles */
+
+.section {
+  background-color: #fbfaf7;
+  padding: 100px 20px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.subtitle {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a7860;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: #3c322b;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 15px;
+  color: #594a3f;
+  line-height: 1.8;
+  font-weight: 300;
+  word-break: keep-all;
+}
+
+/* ── Info Cards ── */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.infoCard {
+  background: #f5f2eb;
+  border: 1px solid #e9e4d9;
+  border-radius: 6px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.infoIcon {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.infoCard strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3c322b;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.infoCard p {
+  font-size: 13px;
+  color: #8a7860;
+  line-height: 1.6;
+  font-weight: 300;
+  word-break: keep-all;
+}
+
+/* ── Form Layout ── */
+.form {
+  background: #fff;
+  border: 1px solid #e9e4d9;
+  border-radius: 8px;
+  padding: 48px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  box-shadow: 0 8px 40px rgba(89, 74, 63, 0.05);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldFull {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Labels ── */
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3c322b;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.required {
+  color: #a86e64;
+  font-weight: 600;
+}
+
+.labelHint {
+  font-size: 11px;
+  color: #8a7860;
+  font-weight: 300;
+}
+
+/* ── Inputs ── */
+.input,
+.select,
+.textarea {
+  width: 100%;
+  font-family: 'Montserrat', 'Noto Serif KR', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #3c322b;
+  background-color: #fbfaf7;
+  border: 1px solid #dcd4c3;
+  border-radius: 4px;
+  padding: 12px 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #c2b59b;
+  font-weight: 300;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #8a7860;
+  box-shadow: 0 0 0 3px rgba(138, 120, 96, 0.1);
+  background-color: #fff;
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7860' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.7;
+}
+
+.inputMarginTop {
+  margin-top: 10px;
+}
+
+/* ── Product Checkbox Grid ── */
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.checkboxCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fbfaf7;
+  border: 1.5px solid #dcd4c3;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #594a3f;
+  font-weight: 300;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+
+.checkboxCard:hover {
+  border-color: #8a7860;
+  background-color: #f5f2eb;
+}
+
+.checkboxCardActive {
+  border-color: #594a3f;
+  background-color: #f5f2eb;
+  color: #3c322b;
+  font-weight: 400;
+}
+
+.checkboxHidden {
+  display: none;
+}
+
+.checkboxMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1.5px solid #dcd4c3;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #594a3f;
+  background-color: #fff;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.checkboxCardActive .checkboxMark {
+  background-color: #594a3f;
+  border-color: #594a3f;
+  color: #fff;
+}
+
+/* ── Privacy Row ── */
+.privacyRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkboxSmall {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  accent-color: #594a3f;
+  cursor: pointer;
+}
+
+.privacyLabel {
+  font-size: 12px;
+  color: #8a7860;
+  line-height: 1.6;
+  font-weight: 300;
+  cursor: pointer;
+  word-break: keep-all;
+}
+
+/* ── Submit Button ── */
+.submitButton {
+  width: 100%;
+  padding: 16px;
+  background-color: #594a3f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #3c322b;
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  background-color: #c2b59b;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loadingSpinner {
+  opacity: 0.8;
+}
+
+/* ── Error ── */
+.errorMessage {
+  font-size: 13px;
+  color: #a86e64;
+  text-align: center;
+  padding: 12px 16px;
+  background-color: #fdf0ee;
+  border: 1px solid #f5c2b6;
+  border-radius: 4px;
+}
+
+/* ── Success ── */
+.successBox {
+  background: #fff;
+  border: 1px solid #e9e4d9;
+  border-radius: 8px;
+  padding: 64px 48px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(89, 74, 63, 0.05);
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #f5f2eb;
+  border: 2px solid #dcd4c3;
+  font-size: 28px;
+  color: #594a3f;
+  margin-bottom: 24px;
+}
+
+.successTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #3c322b;
+  margin-bottom: 16px;
+}
+
+.successMessage {
+  font-size: 14px;
+  color: #594a3f;
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 32px auto;
+  word-break: keep-all;
+}
+
+.resetButton {
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid #594a3f;
+  color: #594a3f;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.resetButton:hover {
+  background-color: #594a3f;
+  color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 16px;
+  }
+
+  .form {
+    padding: 32px 24px;
+    gap: 22px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+}

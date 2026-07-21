@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import InstagramFeed from '../components/InstagramFeed';
+import KakaoTalkWidget from '../components/KakaoTalkWidget';
 
 export default function Home() {
   return (
@@ -26,7 +28,7 @@ export default function Home() {
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>About</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Goum-gwaja</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Gift Set</a>
-          <a href="#" style={{ borderBottom: '1px solid transparent' }}>Contact</a>
+          <Link href="/contact" style={{ borderBottom: '1px solid transparent', color: 'inherit' }}>Contact</Link>
         </nav>
       </header>
 
@@ -125,6 +127,39 @@ export default function Home() {
       {/* Instagram Feed Section */}
       <InstagramFeed />
 
+      {/* CTA Banner - 단체 견적 문의 */}
+      <section style={{
+        padding: '80px 40px',
+        backgroundColor: '#3c322b',
+        textAlign: 'center',
+      }}>
+        <span style={{ display: 'block', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#c2b59b', marginBottom: '16px', fontWeight: 500 }}>
+          Bulk & Corporate Orders
+        </span>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', 'Noto Serif KR', serif", fontSize: '36px', fontWeight: 300, color: '#fbfaf7', marginBottom: '16px', lineHeight: 1.3 }}>
+          단체 답례품 견적 문의
+        </h2>
+        <p style={{ fontSize: '15px', color: '#c2b59b', fontWeight: 300, lineHeight: 1.8, maxWidth: '520px', margin: '0 auto 36px auto', wordBreak: 'keep-all' }}>
+          결혼식·돌잔치·기업 행사 등 30개 이상의 단체 주문은 맞춤 견적으로 더 합리적으로 준비하세요.
+        </p>
+        <Link href="/contact" style={{
+          display: 'inline-block',
+          backgroundColor: 'transparent',
+          border: '1px solid #c2b59b',
+          color: '#fbfaf7',
+          padding: '14px 36px',
+          fontSize: '13px',
+          letterSpacing: '0.1em',
+          borderRadius: '2px',
+          fontWeight: 400,
+          textDecoration: 'none',
+          transition: 'all 0.3s',
+        }}>
+          견적 문의하기
+        </Link>
+      </section>
+
+
       {/* Footer */}
       <footer style={{
         padding: '60px 40px',
@@ -144,10 +179,12 @@ export default function Home() {
           <div>
             <p><strong>Shop</strong> | 서울시 종로구 삼청동 123-4 1층</p>
             <p><strong>Tel</strong> | 02-1234-5678</p>
-            <p><strong>Instagram</strong> | @sweet_ribbon_store</p>
+            <p><strong>Instagram</strong> | <a href="https://instagram.com/sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>@sweet_ribbon_store</a></p>
+            <p><strong>KakaoTalk</strong> | <a href="https://pf.kakao.com/_sweet_ribbon_store" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>@스위트리본</a></p>
           </div>
         </div>
       </footer>
+      <KakaoTalkWidget />
     </div>
   );
 }
