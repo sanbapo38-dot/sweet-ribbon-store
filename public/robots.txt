@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sweet-ribbon-store-p67x-13pa7gy6f-sanbapo38-5965s-projects.vercel.app/sitemap.xml
