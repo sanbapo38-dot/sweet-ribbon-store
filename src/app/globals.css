@@ -35,3 +35,174 @@ a {
     transform: translateY(0px);
   }
 }
+
+/* Responsive Layout Utilities */
+.responsive-header {
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9e4d9;
+  background-color: #fbfaf7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: padding 0.3s ease;
+}
+
+.responsive-nav {
+  display: flex;
+  gap: 30px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #594a3f;
+  font-weight: 300;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.responsive-hero {
+  padding: 100px 40px 100px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: padding 0.3s ease;
+}
+
+.responsive-hero-title {
+  font-family: 'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #2c221e;
+  margin-bottom: 30px;
+  word-break: keep-all;
+  letter-spacing: -0.015em;
+  transition: font-size 0.3s ease;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.responsive-section-padding {
+  padding: 100px 40px;
+  transition: padding 0.3s ease;
+}
+
+.responsive-cta-title {
+  font-family: 'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #fbfaf7;
+  margin-bottom: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  transition: font-size 0.3s ease;
+}
+
+.responsive-footer {
+  padding: 60px 40px;
+  background-color: #e9e4d9;
+  border-top: 1px solid #dcd4c3;
+  color: #594a3f;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  transition: padding 0.3s ease;
+}
+
+.responsive-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.responsive-breadcrumb {
+  padding: 16px 40px;
+  font-size: 12px;
+  color: #8a7860;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #f0ece2;
+  transition: padding 0.3s ease;
+}
+
+/* Mobile & Tablet Specific Queries */
+@media (max-width: 768px) {
+  .responsive-breadcrumb {
+    padding: 12px 20px;
+  }
+
+  .responsive-header {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .responsive-nav {
+    gap: 16px;
+    font-size: 13px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .responsive-hero {
+    padding: 60px 20px 40px 20px;
+  }
+
+  .responsive-hero-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .responsive-section-padding {
+    padding: 60px 20px;
+  }
+
+  .responsive-cta-title {
+    font-size: 24px;
+  }
+
+  .responsive-footer {
+    padding: 40px 20px;
+  }
+
+  .responsive-footer-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-header {
+    padding: 12px 16px;
+  }
+  
+  .responsive-nav {
+    gap: 10px;
+    font-size: 12px;
+  }
+  
+  .responsive-hero-title {
+    font-size: 24px;
+  }
+  
+  .responsive-cta-title {
+    font-size: 20px;
+  }
+}
+

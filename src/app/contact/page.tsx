@@ -12,14 +12,7 @@ export default function ContactPage() {
   return (
     <div style={{ backgroundColor: '#fbfaf7', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
-      <header style={{
-        padding: '30px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderBottom: '1px solid #e9e4d9',
-        backgroundColor: '#fbfaf7',
-      }}>
+      <header className="responsive-header">
         <Link href="/" style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: '26px',
@@ -30,7 +23,7 @@ export default function ContactPage() {
         }}>
           Sweet Ribbon
         </Link>
-        <nav style={{ display: 'flex', gap: '30px', fontSize: '14px', letterSpacing: '0.05em', color: '#594a3f', fontWeight: 300 }}>
+        <nav className="responsive-nav">
           <Link href="/" style={{ color: '#594a3f', textDecoration: 'none' }}>About</Link>
           <Link href="/" style={{ color: '#594a3f', textDecoration: 'none' }}>Goum-gwaja</Link>
           <Link href="/" style={{ color: '#594a3f', textDecoration: 'none' }}>Gift Set</Link>
@@ -44,13 +37,7 @@ export default function ContactPage() {
       </header>
 
       {/* Breadcrumb */}
-      <div style={{
-        padding: '16px 40px',
-        fontSize: '12px',
-        color: '#8a7860',
-        letterSpacing: '0.05em',
-        borderBottom: '1px solid #f0ece2',
-      }}>
+      <div className="responsive-breadcrumb">
         <Link href="/" style={{ color: '#8a7860', textDecoration: 'none' }}>Home</Link>
         <span style={{ margin: '0 8px' }}>›</span>
         <span style={{ color: '#3c322b' }}>단체 견적 문의</span>
@@ -62,16 +49,8 @@ export default function ContactPage() {
       </main>
 
       {/* Footer */}
-      <footer style={{
-        padding: '60px 40px',
-        backgroundColor: '#e9e4d9',
-        borderTop: '1px solid #dcd4c3',
-        color: '#594a3f',
-        fontSize: '13px',
-        fontWeight: 300,
-        lineHeight: '1.8',
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>
+      <footer className="responsive-footer">
+        <div className="responsive-footer-container">
           <div>
             <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 400, color: '#3c322b', marginBottom: '16px', letterSpacing: '0.05em' }}>Sweet Ribbon</h4>
             <p>Premium Dessert & Gift Packaging</p>

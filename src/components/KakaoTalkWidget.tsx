@@ -58,17 +58,7 @@ export default function KakaoTalkWidget() {
 
   return (
     <div 
-      style={{
-        position: 'fixed',
-        bottom: '30px',
-        right: '30px',
-        zIndex: 9999,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-end',
-        gap: '12px',
-        fontFamily: "'Noto Sans KR', sans-serif"
-      }}
+      className="floating-widget-container"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
@@ -80,6 +70,70 @@ export default function KakaoTalkWidget() {
         @keyframes pulseBtn {
           0%, 100% { box-shadow: 0 4px 16px rgba(89, 74, 63, 0.25), 0 0 0 0 rgba(60, 50, 43, 0.4); }
           70% { box-shadow: 0 4px 16px rgba(89, 74, 63, 0.25), 0 0 0 8px rgba(60, 50, 43, 0); }
+        }
+        
+        .floating-widget-container {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          z-index: 9999;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 12px;
+          font-family: 'Noto Sans KR', sans-serif;
+          transition: all 0.3s ease;
+        }
+        
+        .widget-attention-badge {
+          position: absolute;
+          right: 68px;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: #594a3f;
+          color: #fbfaf7;
+          padding: 8px 16px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 500;
+          white-space: nowrap;
+          box-shadow: 0 4px 12px rgba(89, 74, 63, 0.15);
+          pointer-events: none;
+          animation: pulseGlow 2s infinite ease-in-out;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          transition: all 0.3s ease;
+        }
+
+        .widget-main-btn {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background-color: #3c322b;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fbfaf7;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+        }
+
+        @media (max-width: 768px) {
+          .floating-widget-container {
+            bottom: 20px;
+            right: 20px;
+            gap: 8px;
+          }
+          .widget-attention-badge {
+            display: none !important;
+          }
+          .widget-main-btn {
+            width: 48px !important;
+            height: 48px !important;
+          }
         }
       `}} />
 
@@ -150,27 +204,7 @@ export default function KakaoTalkWidget() {
       <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
         {/* Pulsing Attention Badge */}
         {!isOpen && (
-          <div 
-            style={{
-              position: 'absolute',
-              right: '68px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              backgroundColor: '#594a3f',
-              color: '#fbfaf7',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              fontSize: '12px',
-              fontWeight: 500,
-              whiteSpace: 'nowrap',
-              boxShadow: '0 4px 12px rgba(89, 74, 63, 0.15)',
-              pointerEvents: 'none',
-              animation: 'pulseGlow 2s infinite ease-in-out',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-          >
+          <div className="widget-attention-badge">
             <span style={{ 
               display: 'inline-block', 
               width: '6px', 
@@ -184,19 +218,8 @@ export default function KakaoTalkWidget() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
+          className="widget-main-btn"
           style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            backgroundColor: '#3c322b',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#fbfaf7',
-            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-            position: 'relative',
             animation: !isOpen ? 'pulseBtn 2s infinite' : 'none'
           }}
           onMouseEnter={(e) => {

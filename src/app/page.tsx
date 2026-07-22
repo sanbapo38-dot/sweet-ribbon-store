@@ -47,17 +47,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: '#fbfaf7', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
       {/* Header */}
-      <header style={{
-        padding: '30px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderBottom: '1px solid #e9e4d9',
-        backgroundColor: '#fbfaf7',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
+      <header className="responsive-header">
         <div style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: '26px',
@@ -67,7 +57,7 @@ export default function Home() {
         }}>
           Sweet Ribbon
         </div>
-        <nav style={{ display: 'flex', gap: '30px', fontSize: '14px', letterSpacing: '0.05em', color: '#594a3f', fontWeight: 300, alignItems: 'center' }}>
+        <nav className="responsive-nav">
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>About</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Goum-gwaja</a>
           <a href="#" style={{ borderBottom: '1px solid transparent' }}>Gift Set</a>
@@ -123,12 +113,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section style={{
-        padding: '100px 40px 100px 40px',
-        textAlign: 'center',
-        maxWidth: '800px',
-        margin: '0 auto'
-      }}>
+      <section className="responsive-hero">
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
@@ -145,16 +130,7 @@ export default function Home() {
         <span style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a7860', fontWeight: 500, display: 'block', marginBottom: '20px' }}>
           Online Premium Goum-gwaja Gift Shop
         </span>
-        <h1 style={{
-          fontFamily: "'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif",
-          fontSize: '40px',
-          fontWeight: 500,
-          lineHeight: '1.55',
-          color: '#2c221e',
-          marginBottom: '30px',
-          wordBreak: 'keep-all',
-          letterSpacing: '-0.015em'
-        }}>
+        <h1 className="responsive-hero-title">
           마음을 묶어 전하는 달콤함,<br />
           스위트리본 온라인 구움과자 답례품
         </h1>
@@ -401,8 +377,7 @@ export default function Home() {
       <InstagramFeed />
 
       {/* Customer Reviews Section */}
-      <section style={{
-        padding: '100px 40px',
+      <section className="responsive-section-padding" style={{
         backgroundColor: '#f5f2eb',
         borderTop: '1px solid #e9e4d9',
         borderBottom: '1px solid #e9e4d9',
@@ -421,14 +396,7 @@ export default function Home() {
         }}>
           스위트리본을 선택해주신 분들의 이야기
         </h2>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '30px',
-          textAlign: 'left'
-        }}>
+        <div className="reviews-grid">
           {/* Review 1 */}
           <div style={{
             backgroundColor: '#ffffff',
@@ -507,15 +475,14 @@ export default function Home() {
       </section>
 
       {/* CTA Banner - 단체 견적 문의 */}
-      <section style={{
-        padding: '80px 40px',
+      <section className="responsive-section-padding" style={{
         backgroundColor: '#3c322b',
         textAlign: 'center',
       }}>
         <span style={{ display: 'block', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#c2b59b', marginBottom: '16px', fontWeight: 500 }}>
           Bulk & Corporate Orders
         </span>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif", fontSize: '32px', fontWeight: 500, color: '#fbfaf7', marginBottom: '16px', lineHeight: 1.45, letterSpacing: '-0.015em' }}>
+        <h2 className="responsive-cta-title">
           기업 · 관공서 · 단체 답례품 견적 문의
         </h2>
         <p style={{ fontSize: '15px', color: '#c2b59b', fontWeight: 300, lineHeight: 1.8, maxWidth: '580px', margin: '0 auto 36px auto', wordBreak: 'keep-all' }}>
@@ -539,16 +506,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer style={{
-        padding: '60px 40px',
-        backgroundColor: '#e9e4d9',
-        borderTop: '1px solid #dcd4c3',
-        color: '#594a3f',
-        fontSize: '13px',
-        fontWeight: 300,
-        lineHeight: '1.8'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>
+      <footer className="responsive-footer">
+        <div className="responsive-footer-container">
           <div>
             <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '18px', fontWeight: 400, color: '#3c322b', marginBottom: '16px', letterSpacing: '0.05em' }}>Sweet Ribbon</h4>
             <p>Premium Dessert & Gift Packaging</p>
